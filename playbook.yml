@@ -1,9 +1,13 @@
 - hosts: all
+  become: yes
+  become_method: sudo
+  become_user:  root
   tasks:
     - name: install vsftpd
       yum:
         name: vsftpd
         state: installed
+      tags: ['alpha', 'never']
 
 
 
@@ -11,3 +15,5 @@
       yum:
          name: httpd
          state: installed 
+      tags: ['beta', 'never']
+
